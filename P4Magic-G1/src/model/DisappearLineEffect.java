@@ -9,7 +9,7 @@ package model;
  *
  * @author Adrien Techer
  */
-public class DisappearEffect extends Effect {
+public class DisappearLineEffect extends Effect {
 
     /**
      * This effect makes the tile disappear that has just been played and thus
@@ -21,7 +21,9 @@ public class DisappearEffect extends Effect {
      */
     @Override
     public void playEffect(int line, int column, Game game) {
+        for (int i = 0; i < column; i++) {
+            game.getBoard().getTileIJ(line, i).setStatus(-1);
+        }
         game.getBoard().getTileIJ(line, column).setStatus(-1);
     }
-
 }

@@ -1,4 +1,4 @@
-/** 
+/**
  * MagicP4
  * IUT Lyon 1 - 2016
  */
@@ -14,15 +14,16 @@ import org.junit.Test;
 
 /**
  * Test class for ChangeColorEffect
+ *
  * @author Amélie Cordier - IUT Lyon 1 - 2016
  */
 public class ChangeColorEffectTest {
-    
+
     static Game aGame;
-    
+
     public ChangeColorEffectTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
 
@@ -47,11 +48,9 @@ public class ChangeColorEffectTest {
     }
 
     /**
-     * Test du bon fonctionnement du jeu, en dehors de l'effet 
-     * Résultats attendus après le coup : 
-     * - un pion de plus sur le plateau 
-     * - le tour de jeu est passé 
-     * - l'effet a bien été appliqué
+     * Test du bon fonctionnement du jeu, en dehors de l'effet Résultats
+     * attendus après le coup : - un pion de plus sur le plateau - le tour de
+     * jeu est passé - l'effet a bien été appliqué
      */
     @Test
     public void testChangeColorEffectNormalGame() {
@@ -86,10 +85,9 @@ public class ChangeColorEffectTest {
     }
 
     /**
-     * Test de ChangeColorEffect sur grille vide 
-     * Vérification de l'état de la tuile après application de l'effet 
-     * Résultats attendus : la case doit être de la couleur opposée à celle 
-     * jouée 
+     * Test de ChangeColorEffect sur grille vide Vérification de l'état de la
+     * tuile après application de l'effet Résultats attendus : la case doit être
+     * de la couleur opposée à celle jouée
      */
     @Test
     public void testChangeColorEffectEmptyGame() {
@@ -103,10 +101,9 @@ public class ChangeColorEffectTest {
 
         // Coup joué sur la case de l'effet 
         aGame.playMove(0);
-        
+
         // Récupération de l'ID du joueur suivant 
         int id_next_player = aGame.getCurrentPlayer().getId();
-        
 
         // Vérifications :
         // - la case est bien de la couleur opposée à celle jouée (donc de la couleur du joueur suivant)
@@ -117,12 +114,12 @@ public class ChangeColorEffectTest {
         assertTrue(aGame.getCurrentPlayer().getId() != id_player);
 
     }
-    
+
     /**
-     * Test de ChangeColorEffect sur grille vide 
-     * Vérification de l'état de la tuile après application de l'effet et deux coups joués
-     * Résultats attendus : la case doit être de la couleur opposée à celle 
-     * jouée pour chaque coup joué
+     * Test de ChangeColorEffect sur grille vide Vérification de l'état de la
+     * tuile après application de l'effet et deux coups joués Résultats attendus
+     * : la case doit être de la couleur opposée à celle jouée pour chaque coup
+     * joué
      */
     @Test
     public void testChangeColorEffectTwoTokensEmptyGame() {
@@ -132,16 +129,15 @@ public class ChangeColorEffectTest {
         aGame.getBoard().getTileIJ(height - 1, 0).setEffect(new ChangeColorEffect());
         aGame.getBoard().getTileIJ(height - 2, 0).setEffect(new ChangeColorEffect());
 
-        
         // Récupération de l'ID du joueur courant 
         int id_player = aGame.getCurrentPlayer().getId();
 
         // Coup joué sur la case de l'effet 
         aGame.playMove(0);
-        
+
         // Récupération de l'ID du joueur suivant 
         int id_next_player = aGame.getCurrentPlayer().getId();
-        
+
         aGame.playMove(0);
 
         // Vérifications :
@@ -157,10 +153,8 @@ public class ChangeColorEffectTest {
     }
 
     /**
-     * Test de ChangeColorEffect sur grille vide 
-     * Vérification du nombre de jetons
-     * après jeu 
-     * Résultat attendu : le nombre doit être égal à 1
+     * Test de ChangeColorEffect sur grille vide Vérification du nombre de
+     * jetons après jeu Résultat attendu : le nombre doit être égal à 1
      */
     @Test
     public void testChangeColorEffectEmptyGameWithTilesNumber() {
@@ -178,12 +172,10 @@ public class ChangeColorEffectTest {
     }
 
     /**
-     * Test de ChangeColorEffect sur grille pré-remplie 
-     * Vérification de l'état de
-     * la tuile après application de l'effet 
-     * Résultat attendu : la case est de la couleur opposée à celle jouée
-     * l'effet doit être sur la case 
-     * et le tour doit être passé
+     * Test de ChangeColorEffect sur grille pré-remplie Vérification de l'état
+     * de la tuile après application de l'effet Résultat attendu : la case est
+     * de la couleur opposée à celle jouée l'effet doit être sur la case et le
+     * tour doit être passé
      */
     @Test
     public void testChangeColorEffectFilledGame() {
@@ -206,7 +198,7 @@ public class ChangeColorEffectTest {
         // Récupération de l'ID du joueur suivant 
         int id_next_player = aGame.getCurrentPlayer().getId();
         System.out.println(id_next_player);
-        
+
         // Vérifications :
         // - la case est bien de la couleur du joueur suivant (puisque changecolor s'applique)
         // - l'effet est bien appliqué sur la case 
@@ -217,5 +209,4 @@ public class ChangeColorEffectTest {
 
     }
 
-    
 }
