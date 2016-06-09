@@ -9,22 +9,20 @@ package model;
  *
  * @author Julien
  */
-public class DisappearEffect extends Effect{
-
+public class DestroyColumnEffect extends Effect{
+    
     /**
-     * This effect prevent the actual player from putting a tile 
+     * This effect destroy the actual column
      *
      * @param line
      * @param column
      * @param game
      */
-    
     @Override
     public void playEffect(int line, int column, Game game) {
-        
-        game.getBoard().getTileIJ(line, column).setStatus(-1);
+        for(int i = 0;i<game.getBoard().getHeight();i++){
+            game.getBoard().getTileIJ(i, column).setStatus(-1);
+        }
         
     }
-    
-    
 }
