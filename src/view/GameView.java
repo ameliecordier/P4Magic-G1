@@ -13,6 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 import javax.swing.border.Border;
+import model.Effect;
 import model.Game;
 import model.Player;
 
@@ -209,11 +210,12 @@ public final class GameView extends JFrame implements Observer {
                         panelTmp.getComponent(j).setBackground(Color.WHITE);
 
                     }
-                    if (game.getBoard().getTileIJ(j, i).getEffect() != null) {
+                    final Effect effect = game.getBoard().getTileIJ(j, i).getEffect();
+                    if (effect != null) {
 
                         JPanel panelTmp = (JPanel) _gameRowsGrid.getComponent(i);
                         JLabel tmps = (JLabel) panelTmp.getComponent(j);
-                        tmps.setBorder(BorderFactory.createLineBorder(Color.GREEN, _gameBorderSize));
+                        tmps.setBorder(BorderFactory.createLineBorder(effect.getDebugOutlineColor(), _gameBorderSize));
 
                     } else {
 

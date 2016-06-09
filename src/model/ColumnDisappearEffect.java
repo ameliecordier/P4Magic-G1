@@ -1,10 +1,17 @@
 package model;
 
+import java.awt.Color;
+
 /**
  *
  * @author ElementW
  */
 public class ColumnDisappearEffect extends Effect {
+
+    @Override
+    public Color getDebugOutlineColor() {
+        return Color.ORANGE;
+    }
 
     /**
      * This effect removes all the tokens on the board column the effect tile
