@@ -14,6 +14,7 @@ public class Tile {
 
     private int _status;
     private Effect _effect;
+    private int _effectUseCount;
 
     /**
      * Tile constructor A tile has a status and an effect. The status indicates
@@ -28,6 +29,7 @@ public class Tile {
 
         this._status = status;
         this._effect = null;
+        this._effectUseCount = 0;
     }
 
     /**
@@ -42,12 +44,14 @@ public class Tile {
 
     /**
      * Set the effect of the tile. Any effect managed by the EffectFactory can
-     * be applied to a tile
+     * be applied to a tile.
+     * Resets the effect usage count to 0.
      *
      * @param effect
      */
     public void setEffect(Effect effect) {
         this._effect = effect;
+        this._effectUseCount = 0;
     }
 
     /**
@@ -68,4 +72,22 @@ public class Tile {
         return this._status;
     }
 
+    /**
+     * @return The number of times the effect on the tile has been used.
+     *         0 if there is no effect or the effect has never been used.
+     *         In the context of Effect.playEffect, returns the number of uses
+     *         BEFORE the method call.
+     */
+    public int getEffectUseCount() {
+        return this._effectUseCount;
+    }
+
+    /**
+     * Sets the number of times the effect on the tile has been used.
+     *
+     * @param c usage count
+     */
+    public void setEffectUseCount(int c) {
+        this._effectUseCount = c;
+    }
 }

@@ -6,6 +6,11 @@ package model;
  */
 public class DisappearEffect extends Effect {
 
+    @Override
+    public int getMaxUsageCount(int line, int column, Game game) {
+        return 1;
+    }
+
     /**
      * This effect removes the token that has just been played on the tile
      *
