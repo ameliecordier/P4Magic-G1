@@ -21,6 +21,7 @@ public class DestroyColumnEffect extends Effect{
     @Override
     public void playEffect(int line, int column, Game game) {
         for(int i = 0;i<game.getBoard().getHeight();i++){
+            //On met à -1 pour faire disparaître les cases
             game.getBoard().getTileIJ(i, column).setStatus(-1);
         }
         
