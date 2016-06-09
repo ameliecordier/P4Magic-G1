@@ -77,8 +77,17 @@ public final class Game extends Observable {
 
             }
 
-            if (this._board.getTileIJ(i, column).getEffect() != null) {
-                this._board.getTileIJ(i, column).getEffect().playEffect(i, column, this);
+            final Tile tile = this._board.getTileIJ(i, column);
+            final Effect effect = tile.getEffect();
+            if (effect != null) {
+                effect.playEffect(i, column, this);
+                int uc = tile.getEffectUseCount();
+                int maxUc = effect.getMaxUsageCount(i, column, this);
+                if (/*maxUc != 0 &&*/ uc + 1 == maxUc) {
+                    tile.setEffect(null);
+                } else {
+                    tile.setEffectUseCount(uc + 1);
+                }
             }
 
             Player tmp = Win();
